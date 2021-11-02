@@ -1,0 +1,355 @@
+openapi: 3.0.0
+
+info:
+  title: jobs-api
+  contact: {}
+  version: '1.0'
+
+servers:
+
+- url: https://jobs-node-rest-api.herokuapp.com/
+
+  variables: {}
+
+paths:
+
+  /auth/register:
+
+    post:
+
+      tags:
+
+      - Auth
+
+      summary: register
+
+      operationId: register
+
+      parameters: []
+
+      requestBody:
+
+        description: ''
+
+        content:
+
+          application/json:
+
+            schema:
+
+              $ref: '#/components/schemas/registerrequest'
+
+            example:
+
+              name: huwngdepzai
+
+              email: huwngnosleep@gmail.com
+
+              password: '123456'
+
+        required: true
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+  /auth/login:
+
+    post:
+
+      tags:
+
+      - Auth
+
+      summary: login
+
+      operationId: login
+
+      parameters: []
+
+      requestBody:
+
+        description: ''
+
+        content:
+
+          application/json:
+
+            schema:
+
+              $ref: '#/components/schemas/loginrequest'
+
+            example:
+
+              email: huwngnosleep@gmail.com
+
+              password: '123456'
+
+        required: true
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+  /jobs:
+
+    post:
+
+      tags:
+
+      - Job
+
+      summary: create job
+
+      operationId: createjob
+
+      parameters: []
+
+      requestBody:
+
+        description: ''
+
+        content:
+
+          application/json:
+
+            schema:
+
+              $ref: '#/components/schemas/createjobrequest'
+
+            example:
+
+              company: abcd
+
+              position: xyezzz
+
+        required: true
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+    get:
+
+      tags:
+
+      - Job
+
+      summary: get jobs
+
+      operationId: getjobs
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+  /jobs/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the requested job
+        required: true
+        type: string
+    get:
+      tags:
+      - Job Detail
+      summary: get a single job
+
+    delete:
+
+      tags:
+
+      - Job Detail
+
+      summary: delete job
+
+      operationId: deletejob
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+    patch:
+
+      tags:
+
+      - Job Detail
+
+      summary: update job
+
+      operationId: updatejob
+
+      parameters: []
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+      requestBody:
+
+        description: ''
+
+        content:
+
+          application/json:
+
+            schema:
+
+              $ref: '#/components/schemas/createjobrequest'
+
+            example:
+              company: abc
+
+              position: xyz
+
+        required: true
+
+components:
+
+  schemas:
+
+    registerrequest:
+
+      title: registerrequest
+
+      required:
+
+      - name
+
+      - email
+
+      - password
+
+      type: object
+
+      properties:
+
+        name:
+
+          type: string
+
+        email:
+
+          type: string
+
+        password:
+
+          type: string
+
+      example:
+
+        name: huwngdepzai
+
+        email: huwngnosleep@gmail.com
+
+        password: '123456'
+
+    loginrequest:
+
+      title: loginrequest
+
+      required:
+
+      - email
+
+      - password
+
+      type: object
+
+      properties:
+
+        email:
+
+          type: string
+
+        password:
+
+          type: string
+
+      example:
+
+        email: huwngnosleep@gmail.com
+
+        password: '123456'
+
+    createjobrequest:
+
+      title: createjobrequest
+
+      required:
+
+      - company
+
+      - position
+
+      type: object
+
+      properties:
+
+        company:
+
+          type: string
+
+        position:
+
+          type: string
+
+      example:
+
+        company: abcd
+
+        position: xyezzz
+
+  securitySchemes:
+
+    httpBearer:
+
+      type: http
+
+      scheme: bearer
+
+security:
+
+- httpBearer: []
+
+tags:
+
+- name: Misc
+
+  description: ''
+
