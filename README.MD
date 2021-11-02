@@ -1,7 +1,13 @@
 ### Documentation
 https://jobs-node-rest-api.herokuapp.com/api/v1/docs/#/
 
-#### Setup
+#### Docker Setup
+```
+sudo docker build -t jobs-api-image .
+sudo docker container run -v /app/node_modules -p 3000:3000 jobs-api-image
+```
+
+#### Normal Setup
 
 ```bash
 npm install && npm start
