@@ -20,6 +20,9 @@ app.use(express.json());
 // extra packages
 
 // routes
+app.use('/', (req, res) => {
+  res.send('connect successfully')
+})
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/jobs', authenticateUser, jobsRouter)
 
