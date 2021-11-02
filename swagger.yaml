@@ -346,10 +346,3 @@ components:
 security:
 
 - httpBearer: []
-
-tags:
-
-- name: Misc
-
-  description: ''
-
